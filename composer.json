@@ -1,0 +1,25 @@
+{
+    "name": "amaxlab/backend-design-bundle",
+    "description": "Provides amaxlab.ru standard backend design",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Igor Bodnar",
+            "email": "ibodnar@amaxlab.ru"
+        },
+      {
+            "name": "Egor Zyuskin",
+            "email": "ezyuskin@amaxlab.ru"
+      }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AmaxLab\\Bundle\\BackendDesignBundle\\": ""
+        }
+    },
+    "require": {
+        "symfony/framework-bundle": "~2.5",
+        "symfony/twig-bundle": "~2.5",
+        "mopa/bootstrap-bundle": "v3.0.0-rc1"
+    }
+}

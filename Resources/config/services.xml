@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="gravatar.api" class="AmaxLab\Bundle\BackendDesignBundle\Gravatar\Api" />
+
+        <service id="templating.helper.gravatar" class="AmaxLab\Bundle\BackendDesignBundle\Gravatar\Helper\GravatarHelper">
+            <tag name="templating.helper" alias="gravatar" />
+            <argument type="service" id="gravatar.api" />
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="twig.extension.gravatar" class="AmaxLab\Bundle\BackendDesignBundle\Gravatar\Twig\GravatarExtension">
+            <tag name="twig.extension" alias="gravatar" />
+            <argument type="service" id="templating.helper.gravatar" />
+        </service>
+
+        <service class="AmaxLab\Bundle\BackendDesignBundle\Menu\Builder" id="amaxlab_bundle.backend_design_bundle.menu.builder">
+            <argument id="knp_menu.factory" type="service"/>
+            <argument id="event_dispatcher" type="service"/>
+            <argument id="knp_menu.matcher" type="service"/>
+        </service>
+
+        <service id="amaxlab.backend_designer.main_menu" class="Knp\Menu\MenuItem" factory-service="amaxlab_bundle.backend_design_bundle.menu.builder" factory-method="getMenu">
+            <tag name="knp_menu.menu" alias="backend_main_menu" />
+        </service>
+
+        <service id="amaxlab.backend_designer.affix_menu" class="Knp\Menu\MenuItem" factory-service="amaxlab_bundle.backend_design_bundle.menu.builder" factory-method="getAffixMenu">
+            <tag name="knp_menu.menu" alias="backend_affix_menu" />
+        </service>
+
+    </services>
+
+</container>
