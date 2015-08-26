@@ -25,23 +25,33 @@ class BackendDesignExtension extends Extension implements PrependExtensionInterf
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $kernelBundles = $container->getParameter('kernel.bundles');
+        $bundleName = array_search('AmaxLab\Bundle\BackendDesignBundle\BackendDesignBundle', $kernelBundles) ?: 'BackendDesignBundle';
+        $asseticBundles = $container->getParameter('assetic.bundles');
+        if (is_array($asseticBundles) && !in_array($bundleName, $asseticBundles)) {
+            $asseticBundles[] = $bundleName;
+            $container->setParameter('assetic.bundles', $asseticBundles);
+        }
     }
 
     /**
-     * Allow an extension to prepend the extension configurations.
+     * Allow an extension to prepend the extension configurations. See {@link http://symfony.com/doc/current/cookbook/bundles/prepend_extension.html}
      *
      * @param ContainerBuilder $container
      */
     public function prepend(ContainerBuilder $container)
     {
-        /*http://symfony.com/doc/current/cookbook/bundles/prepend_extension.html*/
-        $options = array(
-            'menu' => array(),
-            'icons' => array(
-                'icon_set'=>'fontawesome4',
-            ),
-        );
+        $kernelBundles = $container->getParameter('kernel.bundles');
+        if (array_key_exists('MopaBootstrapBundle', $kernelBundles)) {
+            $mopaOptions = array(
+                'menu' => array(),
+                'icons' => array(
+                    'icon_set'=>'fontawesome4',
+                ),
+            );
 
-        $container->prependExtensionConfig('mopa_bootstrap', $options);
+            $container->prependExtensionConfig('mopa_bootstrap', $mopaOptions);
+        }
     }
 }
