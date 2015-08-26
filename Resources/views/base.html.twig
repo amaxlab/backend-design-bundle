@@ -37,8 +37,9 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2 navbar-header left-side">
-                    {% block standart_navbar_brend %}<a class="navbar-brand" href="{{ path('homepage') }}">{% block navbar_brend %}Backend{% endblock %}</a>{% endblock %}
+                <div class="col-md-2 navbar-header navbar-header-brand left-side">
+                    {% block navbar_brend_img %}{% endblock%}
+                    {% block standart_navbar_brend %}<a href="{{ path('homepage') }}">{% block navbar_brend %}Backend{% endblock %}</a>{% endblock %}
                 </div>
                 <div class="col-md-10 header-content">
                     <div class="navbar-collapse collapse">
@@ -75,7 +76,7 @@
     </div>
 {% endblock %}
 {% block standart_javascripts %}
-    {% javascripts '@BackendDesignBundle/Resources/public/js/*' %}
+    {% javascripts '@BackendDesignBundle/Resources/public/js/*.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
