@@ -1,7 +1,9 @@
 {
     "name": "amaxlab/backend-design-bundle",
     "description": "Provides amaxlab.ru standard backend design",
+    "homepage": "https://github.com/amaxlab/backend-design-bundle",
     "type": "symfony-bundle",
+    "license": "MIT",
     "authors": [
         {
             "name": "Igor Bodnar",

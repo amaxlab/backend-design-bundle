@@ -2,6 +2,11 @@
 
 namespace AmaxLab\Bundle\BackendDesignBundle\Gravatar\Helper;
 
+/**
+ * Interface GravatarHelperInterface
+ *
+ * @package AmaxLab\Bundle\BackendDesignBundle\Gravatar\Helper
+ */
 interface GravatarHelperInterface
 {
     /**

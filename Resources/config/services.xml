@@ -8,14 +8,14 @@
         <service id="gravatar.api" class="AmaxLab\Bundle\BackendDesignBundle\Gravatar\Api" />
 
         <service id="templating.helper.gravatar" class="AmaxLab\Bundle\BackendDesignBundle\Gravatar\Helper\GravatarHelper">
-            <tag name="templating.helper" alias="gravatar" />
             <argument type="service" id="gravatar.api" />
-            <argument type="service" id="service_container" />
+            <argument type="service" id="request_stack" />
+            <tag name="templating.helper" alias="gravatar" />
         </service>
 
         <service id="twig.extension.gravatar" class="AmaxLab\Bundle\BackendDesignBundle\Gravatar\Twig\GravatarExtension">
-            <tag name="twig.extension" alias="gravatar" />
             <argument type="service" id="templating.helper.gravatar" />
+            <tag name="twig.extension" alias="gravatar" />
         </service>
 
         <service class="AmaxLab\Bundle\BackendDesignBundle\Menu\Builder" id="amaxlab_bundle.backend_design_bundle.menu.builder">

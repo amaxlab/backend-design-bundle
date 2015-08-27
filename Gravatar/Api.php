@@ -84,7 +84,7 @@ class Api
     {
         $path = $this->getUrl($email, null, null, '404');
 
-        if (!$sock = @fsockopen('gravatar.com', 80, $errorNo, $error)) {
+        if (!$sock = fsockopen('gravatar.com', 80, $errorNo, $error)) {
             return null;
         }
 

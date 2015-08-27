@@ -2,7 +2,7 @@
 
 namespace AmaxLab\Bundle\BackendDesignBundle\Gravatar\Helper;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Templating\Helper\Helper;
 use Amaxlab\Bundle\BackendDesignBundle\Gravatar\Api;
 
@@ -20,20 +20,21 @@ class GravatarHelper extends Helper implements GravatarHelperInterface
     protected $api;
 
     /**
-     * @var ContainerInterface $container
+     * @var RequestStack
      */
-    protected $container;
+    protected $requestStack;
 
     /**
      * Constructor
      *
-     * @param Api        $api
-     * @param ContainerInterface $container
+     * @param Api $api
+     * @param RequestStack $requestStack
+     * @internal param ContainerInterface $container
      */
-    public function __construct(Api $api, ContainerInterface $container = null)
+    public function __construct(Api $api, RequestStack $requestStack)
     {
-        $this->api = $api;
-        $this->container = $container;
+        $this->api          = $api;
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -82,11 +83,7 @@ class GravatarHelper extends Helper implements GravatarHelperInterface
             return !!$preset;
         }
 
-        if (!$this->container || !$this->container->has('router')) {
-            return false;
-        }
-
-        return 'https' == strtolower($this->container->get('router')->getContext()->getScheme());
+        return $this->requestStack->getMasterRequest()->isSecure();
     }
 
     /**

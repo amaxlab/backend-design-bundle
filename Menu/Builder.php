@@ -9,8 +9,6 @@ use Knp\Menu\Matcher\MatcherInterface;
 use Knp\Menu\MenuItem;
 use AmaxLab\Bundle\BackendDesignBundle\Event\CreateMenuEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class Builder
@@ -40,9 +38,9 @@ class Builder
     private $menu;
 
     /**
-     * @param FactoryInterface $factory
+     * @param FactoryInterface         $factory
      * @param EventDispatcherInterface $dispatcher
-     * @param MatcherInterface $matcher
+     * @param MatcherInterface         $matcher
      */
     public function __construct(FactoryInterface $factory, EventDispatcherInterface $dispatcher, MatcherInterface $matcher)
     {
