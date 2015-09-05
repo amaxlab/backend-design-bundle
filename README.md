@@ -12,31 +12,28 @@ BackendDesignBundle бандл предоставляющий bootstrap инте
 
     "repositories": [{
         "type": "vcs",
-        "url": "https://git.amaxlab.ru/symfony-bundles/backend-design-bundle.git"
+        "url": "https://github.com/amaxlab/backend-design-bundle.git"
     }]
     
 Выполнить 
 
     composer require amaxlab/backend-design-bundle
 
-### 1. Добавить бандл в AppKernel.php
+### 1. Добавить бандлы в AppKernel.php
 
     $bundles = array(
         ...
+        new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+        new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
         new AmaxLab\Bundle\BackendDesignBundle\BackendDesignBundle(),
     );
 
-### 2. Добавить бандл в настройки assetic'а:
-
-    assetic:
-        bundles: [BackendDesignBundle]
-
-### 3. Унаследовать шаблоны
-В шаблонах которы должны использовать стандартный фирменный стиль:
+### 2. Унаследовать шаблоны
+В шаблонах которые должны использовать стандартный фирменный стиль:
 
     {% extends "BackendDesignBundle::base.html.twig" %}
 
-### 4. Выполнить комманды
+### 3. Выполнить комманды
 
 1. `php app/console cache:clear --env=prod`
 2. `php app/console assets:install --symlink`
@@ -63,18 +60,20 @@ BackendDesignBundle бандл предоставляющий bootstrap инте
 
 * `body_start`
 * `body`
-* `before_nav`
-* `nav`
-* `standart_navbar_brend`
+* `before_main_header`
+* `main_header`
+* `navbar_logo`
+* `navbar_logo_link`
+* `navbar_logo_img`
 * `navbar_brend`
+* `navbar_brend_link`
+* `navbar_brend_title`
 * `main_menu`
 * `page_title_standart`
 * `page_title`
-* `after_nav`
-* `standart_affix_menu`
+* `after_main_header`
 * `affix_menu`
 * `before_content`
-* `standart_content`
 * `content`
 * `after_content`
 * `standart_javascripts`

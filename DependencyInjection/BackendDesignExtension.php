@@ -45,9 +45,11 @@ class BackendDesignExtension extends Extension implements PrependExtensionInterf
         $kernelBundles = $container->getParameter('kernel.bundles');
         if (array_key_exists('MopaBootstrapBundle', $kernelBundles)) {
             $mopaOptions = array(
-                'menu' => array(),
+                'menu' => array(
+                    'template' => 'BackendDesignBundle:Menu:menu.html.twig',
+                ),
                 'icons' => array(
-                    'icon_set'=>'fontawesome4',
+                    'icon_set' => 'fontawesome4',
                 ),
             );
 

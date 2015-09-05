@@ -1,10 +1,10 @@
 {% block standart_doctype %}<!DOCTYPE html>{% endblock %}
 <html>
 <head>
-    {% block head_start %}{% endblock %}
-    {% block standart_charset %}<meta charset="UTF-8" />{% endblock %}
+    {% block head_start %}{% endblock head_start %}
+    {% block standart_charset %}<meta charset="UTF-8" />{% endblock standart_charset %}
     {% block meta %}<meta http-equiv="X-UA-Compatible" content="IE=edge" />{% endblock %}
-    <title>{% block before_title %}{% endblock %}{% block title %}Backend{% endblock %}{% block after_title %}{% endblock %}</title>
+    <title>{% block before_title %}{% endblock before_title%}{% block title %}Backend{% endblock title %}{% block after_title %}{% endblock after_title %}</title>
     {% block standart_stylesheets %}
         {% stylesheets
             'bundles/backenddesign/css/*'
@@ -12,75 +12,79 @@
         %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
         {% endstylesheets %}
-    {% endblock %}
-    {% block stylesheets %}{% endblock %}
+    {% endblock standart_stylesheets %}
+    {% block stylesheets %}{% endblock stylesheets %}
     {% block standart_jquery %}
         {% javascripts '@BackendDesignBundle/Resources/public/js/jquery/jquery.min.js' %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
-    {% endblock %}
+    {% endblock standart_jquery %}
     {% block stnadart_ie9_javascript %}
         <!--[if lt IE 9]>
         {% javascripts '@BackendDesignBundle/Resources/public/js/ie9/*' %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
-        <![endif]-->
-    {% endblock %}
-    {% block standart_favicon %}<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />{% endblock %}
-    {% block head_end %}{% endblock %}
+        <!--[endif]-->
+    {% endblock stnadart_ie9_javascript %}
+    {% block standart_favicon %}<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />{% endblock standart_favicon %}
+    {% block head_end %}{% endblock head_end %}
 </head>
 <body>
-{% block body_start %}{% endblock %}
+{% block body_start %}{% endblock body_start %}
 {% block body %}
-    {% block before_nav %}{% endblock %}
-    {% block nav %}
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-2 navbar-header navbar-header-brand left-side">
-                    {% block navbar_brend_img %}{% endblock%}
-                    {% block standart_navbar_brend %}<a href="{{ path('homepage') }}">{% block navbar_brend %}Backend{% endblock %}</a>{% endblock %}
+    {% block before_main_header %}{% endblock before_main_header %}
+    {% block main_header %}
+    <header class="navbar navbar-header navbar-fixed-top navbar-amax">
+        <div class="header-logo">
+            {% block navbar_logo %}
+            <a href="{% block navbar_logo_link %}#{% endblock navbar_logo_link %}" class="logo-link">
+                <img src="{% block navbar_logo_img %}{% endblock navbar_logo_img %}" alt="logo">
+            </a>
+            {% endblock navbar_logo %}
+            {% block navbar_brend %}
+            <a href="{% block navbar_brend_link %}#{% endblock navbar_brend_link %}" class="brand-link">
+                <div class="brand-container">
+                    <h3>{% block navbar_brend_title %}Backend{% endblock navbar_brend_title %}</h3>
                 </div>
-                <div class="col-md-10 header-content">
-                    <div class="navbar-collapse collapse">
-                        {% block main_menu %}
-                            {{ mopa_bootstrap_menu('backend_main_menu', {'currentClass': 'active', 'ancestorClass': 'active', 'depth': 1}) }}
-                        {% endblock %}
-                        {% block page_title_standart %}
-                            <h1 class="page-title">{% block page_title %}Backend{% endblock %}</h1>
-                        {% endblock %}
-                    </div>
-                </div>
-            </div>
+            </a>
+            {% endblock navbar_brend %}
         </div>
-    </nav>
-    {% endblock %}
-    {% block after_nav %}{% endblock %}
-    <div class="container-fluid">
-        <div class="row">
-            {% block standart_affix_menu %}
-            <div class="col-md-2 sidebar left-side">
-                {% block affix_menu %}
-                    {{ mopa_bootstrap_menu('backend_affix_menu', {'currentClass': 'active', 'ancestorClass': 'active', 'depth': 1}) }}
+        <div class="header-content">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#top-menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="navbar-collapse collapse" id="top-menu-toggle">
+                {% block main_menu %}
+                    {{ mopa_bootstrap_menu('backend_main_menu', {'currentClass': 'active', 'ancestorClass': 'active', 'depth': 1}) }}
                 {% endblock %}
             </div>
+            {% block page_title_standart %}
+                <h1 class="page-title">{% block page_title %}Backend{% endblock %}</h1>
             {% endblock %}
+        </div>
+    </header>
+    {% endblock main_header %}
+    {% block after_main_header %}{% endblock after_main_header %}
+    <div class="page-amax">
+        <div class="sidebar">
+            {% block affix_menu %}
+                {{ mopa_bootstrap_menu('backend_affix_menu', {'currentClass': 'active', 'ancestorClass': 'active', 'depth': 1}) }}
+            {% endblock affix_menu %}
+        </div>
+        <div class="page-content">
             {% block before_content %}{% endblock %}
-            {% block standart_content %}
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                {% block content %}{% endblock%}
-            </div>
-            {% endblock %}
+            {% block content %}{% endblock %}
             {% block after_content %}{% endblock %}
         </div>
     </div>
-{% endblock %}
+{% endblock body %}
 {% block standart_javascripts %}
     {% javascripts '@BackendDesignBundle/Resources/public/js/*.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-{% endblock %}
-{% block javascripts %}{% endblock %}
-{% block body_end %}{% endblock %}
+{% endblock standart_javascripts %}
+{% block javascripts %}{% endblock javascripts %}
+{% block body_end %}{% endblock body_end %}
 </body>
 </html>

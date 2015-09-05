@@ -1,107 +1,238 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
+html {
+    font-family: 'Helvetica Neue', sans-serif;
+}
 body {
-    padding-top: 50px;
+    padding-top: 50px; /* Move down content because we have a fixed navbar that is 50px tall */
 }
-.sub-header {
-    padding-bottom: 10px;
+
+.page-amax {
+    padding-left: 52px;
+
+    -webkit-transition: padding-left .5s;
+    transition: padding-left .5s;
+}
+
+.header-logo {
+    float: left;
+    overflow: hidden;
+
+    width: 52px;
+    height: 50px;
+
+    -webkit-transition: width .5s;
+    transition: width .5s;
+
+    color: #979da7;
+    background: #373d47;
+}
+
+.header-content {
+    overflow: hidden;
+
+    height: 50px;
+    padding-right: 35px;
+
     border-bottom: 1px solid #eee;
+    background: #fff;
 }
-.navbar-header-brand {
-    float:left;
-    height:51px;
-    padding:14px 3px;
-    font-size:18px;
-    line-height:20px;
-    display: inline;
-}
-.navbar-header-brand > img {
-    width: 35px;
-    height: 35px;
-}
-.navbar-header-brand > a {
-    margin-left: 5px;
-    color: #9d9d9d;
-}
-.navbar-header-brand > a:hover,
-.navbar-header-brand > a:focus {
-    text-decoration: none;
-    color: #fff;
-}
-.navbar-fixed-top {
-    border: 0;
-}
+
 .sidebar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    width: 52px;
+
+    -webkit-transition: width .5s;
+    transition: width .5s;
+
+    color: #979da7;
+    background: #373d47;
+}
+
+.brand-container {
+    width: 230px;
+}
+
+.brand-container h3 {
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 36px;
+
+    float: left;
+
+    width: 158px;
+    margin: 0 0 0 14px;
+}
+
+.header-logo a,
+.header-logo .logo-link {
+    display: inline-block;
+
+    height: 50px;
+    padding: 7px 8px;
+
+    color: #979da7;
+
+    vertical-align: middle;
+}
+
+.header-logo .logo-link {
+    width: 36px;
+    padding-right: 0;
+}
+
+.header-logo a.brand-link {
+    width: 174px;
+}
+
+.header-logo .logo-link img {
+    float: left;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 18px;
+}
+
+.header-content .navbar-collapse {
+    float: right;
+}
+
+.navbar-nav {
+    font-size: 12px;
+
+    margin: 0;
+}
+
+.navbar-nav > li {
+    float: left;
+}
+
+.navbar-nav > li > a,
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus {
+    line-height: 28px;
+
+    width: 28px;
+    height: 28px;
+    margin: 11px 5px;
+    padding: 0;
+
+    text-align: center;
+
+    color: #888;
+    border-radius: 40px;
+    background-color: #f5f5f5;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover {
+    background-color: rgb(55, 61, 71);
+}
+
+.navbar-nav a span {
     display: none;
 }
-@media (min-width: 768px) {
-    .sidebar {
-        position: fixed;
-        top: 50px;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        display: block;
-        padding: 20px;
-        overflow-x: hidden;
-        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    }
+
+h1.page-title {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 50px;
+
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0 15px 0 15px;
+
+    vertical-align: top;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: #444;
+}
+
+.page-content {
+    width: 100%;
+    padding: 20px;
+
+    background: #fff;
+}
+
+.header-content .navbar-toggle {
+    position: absolute;
+    right: 2px;
+
+    margin: 0;
+
+    color: #666;
+    border-radius: 0;
 }
 .nav-sidebar {
-    margin-right: -21px; /* 20px padding + 1px border */
-    margin-bottom: 20px;
-    margin-left: -20px;
+    margin-top: 79px;
 }
+
+.nav-sidebar li {
+    width: 230px;
+}
+
 .nav-sidebar > li > a {
-    padding-right: 20px;
-    padding-left: 20px;
+    font-size: 13px;
+
+    padding: 8px 15px 8px 16px;
+
     color: #979da7;
 }
+
 .nav-sidebar > li > a:hover {
+    color: #fff;
     background-color: rgb(36, 39, 45);
-    color: #FFF;
 }
+
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
     color: #fff;
     background-color: rgb(36, 39, 45);
 }
-.nav-sidebar > li > a > i {
-    margin-left: -10px;
-    margin-right: 10px;
-}
-.navbar-right {
-    margin-right: 10px;
-}
-.navbar-nav {
-    font-size: 12px;
-}
-.navbar-inverse .navbar-nav > li > a,
-.navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-nav > li > a:focus {
-    color: #888;
-    padding: 0;
-    background-color: #f5f5f5;
-    margin: 11px 0;
-    margin-left: 10px;
-    border-radius: 40px;
-    height: 28px;
-    width: 28px;
-    line-height: 28px;
+
+.nav-sidebar > li i.fa {
+    width: 20px;
+    margin-right: 23px;
+
     text-align: center;
 }
-.navbar-inverse .navbar-nav > .active > a,
-.navbar-inverse .navbar-nav > .active > a:hover {
-    background-color: rgb(55, 61, 71);
+
+@media (min-width: 1200px) {
+    .page-amax {
+        padding-left: 230px;
+    }
+
+    .header-logo {
+        width: 230px;
+    }
+
+    .sidebar {
+        width: 230px;
+    }
 }
-.navbar-inverse .page-title > i {
-    margin-left: 10px;
-    margin-right: 10px;
+
+
+/*
+TODO удалить все что ниже?
+*/
+/*
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
 }
-.navbar-nav > li > a > i {
-    margin-left: 0;
-    margin-right: 0;
-}
+
 .main {
     padding: 20px;
 }
@@ -116,9 +247,13 @@ body {
 }
 .search-input {
     width: 220px;
-    /*background-image: url(/assets/icon-search-1aee2102ac9ef7c077acce219d346074.png);
+
+*/
+/*background-image: url(/assets/icon-search-1aee2102ac9ef7c077acce219d346074.png);
     background-repeat: no-repeat;
-    background-position: 10px;*/
+    background-position: 10px;*//*
+
+
     margin-top: 5px;
     height: inherit;
     padding: 4px 6px;
@@ -141,24 +276,5 @@ body {
     display: inline-block;
     border-radius: 50%;
 }
-.left-side {
-    background-color: rgb(55, 61, 71);
-    border-right: 1px solid rgb(55, 61, 71);
-    border-bottom:  1px solid rgb(55, 61, 71);
-}
-.header-content {
-    border-bottom: 1px solid #EEE;
-    background-color: #ffffff;
-}
-h1.page-title {
-    margin: 0;
-    padding: 0 15px 0 15px;
-    overflow: hidden;
-    font-size: 20px;
-    line-height: 50px;
-    font-weight: bold;
-    color: #444;
-    text-overflow: ellipsis;
-    vertical-align: top;
-    white-space: nowrap;
-}
+*/
+

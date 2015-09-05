@@ -1,8 +1,14 @@
 /**
  * Created by ezyuskin on 26.08.15.
  */
-$(document).ready(function() {
+
+(function($){
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-});
+        $('[data-toggle="tooltip"]').tooltip({
+            container: 'body'
+        });
+
+        $('.nicescroll').niceScroll();
+    });
+})(window.jQuery);
+
