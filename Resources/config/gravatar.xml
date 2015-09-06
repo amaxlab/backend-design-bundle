@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="gravatar.api" class="AmaxLab\Bundle\BackendDesignBundle\Gravatar\Api" />
+
+        <service id="templating.helper.gravatar" class="AmaxLab\Bundle\BackendDesignBundle\Gravatar\Helper\GravatarHelper">
+            <argument type="service" id="gravatar.api" />
+            <argument type="service" id="request_stack" />
+            <tag name="templating.helper" alias="gravatar" />
+        </service>
+
+        <service id="twig.extension.gravatar" class="AmaxLab\Bundle\BackendDesignBundle\Twig\GravatarExtension">
+            <argument type="service" id="templating.helper.gravatar" />
+            <tag name="twig.extension" alias="gravatar" />
+        </service>
+
+    </services>
+
+</container>

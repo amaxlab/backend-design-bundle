@@ -9,22 +9,26 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
 class BackendDesignExtension extends Extension implements PrependExtensionInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $this->processConfiguration($configuration, $configs);
+        $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        if ($config['gravatar']) {
+            $loader->load('gravatar.xml');
+        }
 
         $kernelBundles = $container->getParameter('kernel.bundles');
         $bundleName = array_search('AmaxLab\Bundle\BackendDesignBundle\BackendDesignBundle', $kernelBundles) ?: 'BackendDesignBundle';
@@ -36,7 +40,7 @@ class BackendDesignExtension extends Extension implements PrependExtensionInterf
     }
 
     /**
-     * Allow an extension to prepend the extension configurations. See {@link http://symfony.com/doc/current/cookbook/bundles/prepend_extension.html}
+     * Allow an extension to prepend the extension configurations. See {@link http://symfony.com/doc/current/cookbook/bundles/prepend_extension.html}.
      *
      * @param ContainerBuilder $container
      */

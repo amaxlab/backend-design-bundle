@@ -1,30 +1,28 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: zyuskin_en
  * Date: 21.01.15
- * Time: 16:35
+ * Time: 16:35.
  */
-
 namespace AmaxLab\Bundle\BackendDesignBundle\Event;
 
-use Knp\Menu\MenuItem;
+use Knp\Menu\ItemInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Class CreateMenuEvent
- *
- * @package AmaxLab\Bundle\BackendDesignBundle\Event
+ * Class CreateMenuEvent.
  */
 class CreateMenuEvent extends Event
 {
     /**
-     * @var MenuItem
+     * @var ItemInterface
      */
     private $menu;
 
     /**
-     * @param $menu
+     * @param ItemInterface $menu
      */
     public function __construct($menu)
     {
@@ -32,7 +30,7 @@ class CreateMenuEvent extends Event
     }
 
     /**
-     * @return MenuItem
+     * @return ItemInterface
      */
     public function getMenu()
     {
@@ -40,7 +38,7 @@ class CreateMenuEvent extends Event
     }
 
     /**
-     * @param MenuItem $menu
+     * @param ItemInterface $menu
      */
     public function setMenu($menu)
     {

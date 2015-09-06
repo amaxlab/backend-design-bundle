@@ -2,7 +2,6 @@
 
 namespace AmaxLab\Bundle\BackendDesignBundle\Menu;
 
-
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Knp\Menu\Matcher\MatcherInterface;
@@ -11,9 +10,7 @@ use AmaxLab\Bundle\BackendDesignBundle\Event\CreateMenuEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Class Builder
- *
- * @package AmaxLab\Bundle\BackendDesignBundle\Menu
+ * Class Builder.
  */
 class Builder
 {
@@ -44,9 +41,9 @@ class Builder
      */
     public function __construct(FactoryInterface $factory, EventDispatcherInterface $dispatcher, MatcherInterface $matcher)
     {
-        $this->factory    = $factory;
+        $this->factory = $factory;
         $this->dispatcher = $dispatcher;
-        $this->matcher    = $matcher;
+        $this->matcher = $matcher;
 
         $this->menu = $this->factory->createItem('root', array(
             'childrenAttributes' => array(
@@ -104,11 +101,11 @@ class Builder
     private function findFirstLevelActive(ItemInterface $rootItem)
     {
         foreach ($rootItem as $firstLevelItem) {
-            if ($this->matcher->isCurrent($firstLevelItem) || $this->matcher->isAncestor($firstLevelItem)){
+            if ($this->matcher->isCurrent($firstLevelItem) || $this->matcher->isAncestor($firstLevelItem)) {
                 return $firstLevelItem;
             }
         }
 
-        return null;
+        return;
     }
 }

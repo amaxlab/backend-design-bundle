@@ -7,19 +7,14 @@ BackendDesignBundle бандл предоставляющий bootstrap инте
 ---------
 
 ### 0. Установить бандл с помощью композера
- 
-Добавить в composer.json пути к репозитариям
 
-    "repositories": [{
-        "type": "vcs",
-        "url": "https://github.com/amaxlab/backend-design-bundle.git"
-    }]
-    
-Выполнить 
+Выполнить комманду
 
     composer require amaxlab/backend-design-bundle
 
 ### 1. Добавить бандлы в AppKernel.php
+
+Бандл зависит от других бандлов которые так же должны быть автозагружены
 
     $bundles = array(
         ...
@@ -35,10 +30,9 @@ BackendDesignBundle бандл предоставляющий bootstrap инте
 
 ### 3. Выполнить комманды
 
-1. `php app/console cache:clear --env=prod`
-2. `php app/console assets:install --symlink`
-3. `php app/console assetic:dump`
-4. `php app/console assetic:dump --env=prod`
+1. `php app/console assets:install --symlink` или `php app/console assets:install` на ОС не поддреживающих символьные ссылки
+2. `php app/console assetic:dump && php app/console assetic:dump --env=prod`
+3. `php app/console cache:clear --env=prod && php app/console cache:clear`
 
 
 Области шаблона
@@ -59,7 +53,7 @@ BackendDesignBundle бандл предоставляющий bootstrap инте
 * `head_end`
 
 * `body_start`
-* `body`
+* `body` - основная область содержащая большинство других областей. Изменение этого блока приведет к полному изменению внешнего вида типовой страницы
 * `before_main_header`
 * `main_header`
 * `navbar_logo`
@@ -85,10 +79,27 @@ BackendDesignBundle бандл предоставляющий bootstrap инте
 * `header_button_bar_btn_toolbar_inner` Верхние управляющие кнопки. Помещаются несколько групп кнопок (`class="btn-group"`)
 * `footer_button_bar_btn_toolbar_inner` Нижние управляющие кнопки. Помещаются несколько групп кнопок (`class="btn-group"`)
 * `content` Основное содержимое.
-* `modal_content` Содержимое модального окна
 
 * C помощью блоков `standart_doctype` `standart_charset` `standart_jquery` `standart_favicon` можно переопределить одноименные теги или подключаемые ресурсы
 
+
+Другие возможности
+------------------
+
+## Использование Gravatar.com
+
+Чтобы иметь возможность использовать gravatar необходимо указать в config.yml
+
+    backend_design:
+        gravatar: true
+
+По умолчанию использование граватара отключено. Использование граватара сводится к использованию трех возможных функций в шаблоне:
+
+* `{{ gravatar(email, size, rating, default) }}` 
+* `{{ gravatar_hash(hash, size, rating, default) }}` 
+* `{{ gravatar_exists(email) }}` 
+
+По умолчанию будет испоьзоваться текущий протокол (http или https) данного запроса. Это поведение можно изменить передав в качестве последего параметра во всех функциях true или false (для включение или выключения https соответственно)
 
 Интеграция с другими бандлами
 -----------------------------
@@ -101,10 +112,8 @@ BackendDesignBundle бандл предоставляющий bootstrap инте
         template:
             pagination: BackendDesignBundle:Pagination:sliding.html.twig
 
-
 TODO
 ----
 
-1. Добавить поддержку less/sass
+1. Добавить поддержку sass
 2. Дополнить описание областей шаблона
-3. Убрать из бутстрапа все внесенные туда вручную правки
