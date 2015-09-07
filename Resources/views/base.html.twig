@@ -3,7 +3,10 @@
 <head>
     {% block head_start %}{% endblock head_start %}
     {% block standart_charset %}<meta charset="UTF-8" />{% endblock standart_charset %}
-    {% block meta %}<meta http-equiv="X-UA-Compatible" content="IE=edge" />{% endblock %}
+    {% block meta %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    {% endblock %}
     <title>{% block before_title %}{% endblock before_title%}{% block title %}Backend{% endblock title %}{% block after_title %}{% endblock after_title %}</title>
     {% block standart_stylesheets %}
         {% stylesheets
