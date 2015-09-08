@@ -49,6 +49,7 @@ class BackendDesignExtension extends Extension implements PrependExtensionInterf
         $kernelBundles = $container->getParameter('kernel.bundles');
         if (array_key_exists('MopaBootstrapBundle', $kernelBundles)) {
             $mopaOptions = array(
+                'form' => array(),
                 'menu' => array(
                     'template' => 'BackendDesignBundle:Menu:menu.html.twig',
                 ),
