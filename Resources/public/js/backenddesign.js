@@ -9,6 +9,10 @@
         });
 
         $('.nicescroll').niceScroll();
+
+        $('tr.clickable-row[data-href]').on('click', function() {
+            window.document.location = $(this).data('href');
+        });
     });
 })(window.jQuery);
 

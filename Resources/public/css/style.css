@@ -223,6 +223,9 @@ h1.page-title {
     }
 }
 
+tr.clickable-row[data-href] {
+    cursor: pointer;
+}
 
 /*
 TODO удалить все что ниже?
