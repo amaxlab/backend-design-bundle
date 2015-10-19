@@ -18,7 +18,8 @@
     {% endblock standart_stylesheets %}
     {% block stylesheets %}{% endblock stylesheets %}
     {% block standart_jquery %}
-        {% javascripts '@BackendDesignBundle/Resources/public/js/jquery/jquery.min.js' %}
+        {% javascripts '@BackendDesignBundle/Resources/public/js/jquery/jquery.min.js'
+                       '@BackendDesignBundle/Resources/public/js/jquery/jquery.nicescroll.min.js' %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
     {% endblock standart_jquery %}
