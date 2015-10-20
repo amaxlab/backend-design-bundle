@@ -10,7 +10,7 @@
 
         $('.nicescroll').niceScroll();
 
-        $('tr.clickable-row[data-href]').on('click', function() {
+        $('tr.clickable-row[data-href]').on('dblclick', function() {
             window.document.location = $(this).data('href');
         });
     });
