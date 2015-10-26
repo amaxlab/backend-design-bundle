@@ -136,6 +136,12 @@ body {
 .navbar-nav > .active > a:hover {
     background-color: rgb(55, 61, 71);
     color: #fff;
+    outline: none;
+}
+
+.nav > li > a:focus {
+    background-color: rgb(55, 61, 71);
+    outline: none;
 }
 
 .navbar-nav a span {
