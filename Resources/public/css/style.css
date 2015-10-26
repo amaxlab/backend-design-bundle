@@ -135,6 +135,7 @@ body {
 .navbar-nav > .active > a,
 .navbar-nav > .active > a:hover {
     background-color: rgb(55, 61, 71);
+    color: #fff;
 }
 
 .navbar-nav a span {
