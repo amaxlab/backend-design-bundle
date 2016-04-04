@@ -8,7 +8,7 @@
         "symfony/framework-bundle": "~2.5",
         "symfony/twig-bundle": "~2.5",
         "knplabs/knp-menu-bundle": "~2",
-        "mopa/bootstrap-bundle": "v3.0.0-rc1"
+        "mopa/bootstrap-bundle": "~3.0,>v3.0.0-RC2"
     },
     "autoload": {
         "psr-4": {
