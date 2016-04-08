@@ -234,57 +234,6 @@ tr.clickable-row[data-href] {
     cursor: pointer;
 }
 
-/*
-TODO удалить все что ниже?
-*/
-/*
-.sub-header {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+.table-tab > tbody >tr >th {
+    border-top: none;
 }
-
-.main {
-    padding: 20px;
-}
-@media (min-width: 768px) {
-    .main {
-        padding-right: 40px;
-        padding-left: 40px;
-    }
-}
-.main .page-header {
-    margin-top: 0;
-}
-.search-input {
-    width: 220px;
-
-*/
-/*background-image: url(/assets/icon-search-1aee2102ac9ef7c077acce219d346074.png);
-    background-repeat: no-repeat;
-    background-position: 10px;*//*
-
-
-    margin-top: 5px;
-    height: inherit;
-    padding: 4px 6px;
-    padding-left: 25px;
-    font-size: 13px;
-    background-color: #f5f5f5;
-    border-color: #f5f5f5;
-}
-.placeholders {
-    margin-bottom: 30px;
-    text-align: center;
-}
-.placeholders h4 {
-    margin-bottom: 0;
-}
-.placeholder {
-    margin-bottom: 20px;
-}
-.placeholder img {
-    display: inline-block;
-    border-radius: 50%;
-}
-*/
-
