@@ -5,8 +5,8 @@
     "license": "MIT",
     "type": "symfony-bundle",
     "require": {
-        "symfony/framework-bundle": "~2.5",
-        "symfony/twig-bundle": "~2.5",
+        "symfony/framework-bundle": "~3.0",
+        "symfony/twig-bundle": "~3.0",
         "knplabs/knp-menu-bundle": "~2",
         "mopa/bootstrap-bundle": "~3.0"
     },
