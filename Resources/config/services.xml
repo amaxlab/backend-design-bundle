@@ -11,11 +11,13 @@
             <argument id="knp_menu.matcher" type="service"/>
         </service>
 
-        <service id="amaxlab.backend_designer.main_menu" class="Knp\Menu\MenuItem" factory-service="amaxlab_bundle.backend_design_bundle.menu.builder" factory-method="getMenu">
+        <service id="amaxlab.backend_designer.main_menu" class="Knp\Menu\MenuItem">
+            <factory service="amaxlab_bundle.backend_design_bundle.menu.builder" method="getMenu" />
             <tag name="knp_menu.menu" alias="backend_main_menu" />
         </service>
 
-        <service id="amaxlab.backend_designer.affix_menu" class="Knp\Menu\MenuItem" factory-service="amaxlab_bundle.backend_design_bundle.menu.builder" factory-method="getAffixMenu">
+        <service id="amaxlab.backend_designer.affix_menu" class="Knp\Menu\MenuItem">
+            <factory service="amaxlab_bundle.backend_design_bundle.menu.builder" method="getAffixMenu" />
             <tag name="knp_menu.menu" alias="backend_affix_menu" />
         </service>
 
